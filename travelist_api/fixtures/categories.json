@@ -1,0 +1,72 @@
+[
+    {
+        "model": "travelist_api.category",
+        "pk": 1,
+        "fields": {
+            "name": "Business"
+        }
+    },
+    {
+        "model": "travelist_api.category",
+        "pk": 2,
+        "fields": {
+            "name": "Family Vacay"
+        }
+    },
+    {
+        "model": "travelist_api.category",
+        "pk": 3,
+        "fields": {
+            "name": "Luxury"
+        }
+    },
+    {
+        "model": "travelist_api.category",
+        "pk": 4,
+        "fields": {
+            "name": "Weekend Trip"
+        }
+    },
+    {
+        "model": "travelist_api.category",
+        "pk": 5,
+        "fields": {
+            "name": "Road Trip"
+        }
+    },
+    {
+        "model": "travelist_api.category",
+        "pk": 6,
+        "fields": {
+            "name": "Backpacking"
+        }
+    },
+    {
+        "model": "travelist_api.category",
+        "pk": 7,
+        "fields": {
+            "name": "Cruise"
+        }
+    },
+    {
+        "model": "travelist_api.category",
+        "pk": 8,
+        "fields": {
+            "name": "Holiday"
+        }
+    },
+    {
+        "model": "travelist_api.category",
+        "pk": 9,
+        "fields": {
+            "name": "International"
+        }
+    },
+    {
+        "model": "travelist_api.category",
+        "pk": 10,
+        "fields": {
+            "name": "Romantic Getaway"
+        }
+    }
+]

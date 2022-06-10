@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
+from travelist_api.models import Traveler
 
 
 @api_view(['POST'])
@@ -13,13 +14,16 @@ def login_user(request):
     '''Handles the authentication of a user
 
     Method arguments:
-      request -- The full HTTP request object
+        request -- The full HTTP request object
     '''
     username = request.data['username']
     password = request.data['password']
 
+    # Use the built-in authenticate method to verify
+    # authenticate returns the user object or None if no user is found
     authenticated_user = authenticate(username=username, password=password)
 
+    # Id authentication was successful, respond with their token
     if authenticated_user is not None:
         token = Token.objects.get(user=authenticated_user)
         # TODO: If you need to return more information to the client, update the data dict
@@ -28,6 +32,7 @@ def login_user(request):
             'token': token.key
         }
     else:
+        # Bad login details were provided. So we can't log the user in
         data = { 'valid': False }
     return Response(data)
 
@@ -37,20 +42,30 @@ def register_user(request):
     '''Handles the creation of a new gamer for authentication
 
     Method arguments:
-      request -- The full HTTP request object
+        request -- The full HTTP request object
     '''
 
     # TODO: this is only adding the username and password, if you want to add in more user fields like first and last name update this code
+    # Create a new user by invoking the `create_user` helper method
+    # on Django's built-in User mdoel
     new_user = User.objects.create_user(
         username=request.data['username'],
         password=request.data['password'],
+        first_name=request.data['first_name'],
+        last_name=request.data['last_name']
     )
 
     # TODO: If you're using a model with a 1 to 1 relationship to the django user, create that object here
+    # Now save the extra info in the travelist_api_traveler table
+    traveler = Traveler.objects.create(
+        bio=request.data['bio'],
+        user=new_user
+    )
 
-    
-    token = Token.objects.create(user=new_user)
+    # Use the REST Framework's token generator on the new user account
+    token = Token.objects.create(user=traveler.user)
     # TODO: If you need to send the client more information update the data dict
-    
+
+    # Return the token to the client
     data = { 'token': token.key }
     return Response(data, status=status.HTTP_201_CREATED)

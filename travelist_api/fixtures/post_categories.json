@@ -1,0 +1,18 @@
+[
+    {
+        "model": "travelist_api.postCategory",
+        "pk": 1,
+        "fields": {
+            "post": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "travelist_api.postCategory",
+        "pk": 2,
+        "fields": {
+            "post": 1,
+            "category": 5
+        }
+    }
+]

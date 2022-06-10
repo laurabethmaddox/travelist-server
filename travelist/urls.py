@@ -1,4 +1,4 @@
-"""app_project URL Configuration
+"""travelist URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -14,11 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import include
 from django.urls import path
-from app_api.views import register_user, login_user
+from travelist_api.views import register_user, login_user
+from rest_framework import routers
+from travelist_api.views import CategoryView, PostView
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'categories', CategoryView, 'category')
+router.register(r'posts', PostView, 'post')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register', register_user),
     path('login', login_user),
+    path('', include(router.urls)),
 ]

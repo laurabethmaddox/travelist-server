@@ -1,0 +1,13 @@
+
+[
+    {
+        "model": "travelist_api.post",
+        "pk": 1,
+        "fields": {
+            "traveler": 1,
+            "img": "",
+            "title": "Sedona, Arizona",
+            "body": "Inventore est nihil veritatis sapiente sed autem sequi. Odit ut qui quae voluptatem qui reprehenderit animi voluptatem. Ad dignissimos aut odit voluptate. Ex fugit qui. Quidem veniam quia ut alias rem et ex perferendis. Quisquam totam suscipit. Et laborum quasi possimus qui optio ea laudantium odit repellendus. Consequuntur et vero suscipit ut minus. Ratione velit vero. Quaerat enim et. Magni provident aut voluptate perferendis ut odio. Dolorem omnis necessitatibus voluptatem adipisci voluptatem itaque. Nostrum aperiam aspernatur qui facere cum maxime quia quia sunt. Quisquam nam est possimus amet. Sit voluptatem ullam. Dolor quae quisquam animi ad quisquam."
+        }
+    }
+]
