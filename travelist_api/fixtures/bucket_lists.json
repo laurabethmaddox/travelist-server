@@ -1,0 +1,9 @@
+[
+    {
+        "model": "travelist_api.bucketList",
+        "pk": 1,
+        "fields": {
+            "location": "Australia"
+        }
+    }
+]

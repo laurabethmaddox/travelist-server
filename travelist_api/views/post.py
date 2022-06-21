@@ -42,6 +42,9 @@ class PostView(ViewSet):
         serializer = CreatePostSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save(traveler=traveler)
+        
+        post = Post.objects.get(pk=serializer.data["id"])
+        post.categories.add(*request.data["categories"])
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk):
@@ -52,6 +55,7 @@ class PostView(ViewSet):
         """
 
         post = Post.objects.get(pk=pk)
+        post.categories.set(request.data["categories"])
         serializer = CreatePostSerializer(post, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -68,8 +72,9 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post 
         fields = ('id', 'traveler', 'img', 'title', 'body', 'categories')
+        depth = 1
 
 class CreatePostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ['id', 'traveler', 'img', 'title', 'body', 'categories']
+        fields = ['id', 'traveler', 'img', 'title', 'body']

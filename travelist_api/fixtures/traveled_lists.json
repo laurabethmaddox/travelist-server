@@ -1,0 +1,9 @@
+[
+    {
+        "model": "travelist_api.traveledList",
+        "pk": 1,
+        "fields": {
+            "location": "New York City"
+        }
+    }
+]
